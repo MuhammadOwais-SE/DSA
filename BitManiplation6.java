@@ -1,6 +1,6 @@
 package DSA;
 
-public class BitManiplation {
+public class BitManiplation6 {
         public static void main(String[] args) {
             System.out.print("bitManuplation in java");
         }
