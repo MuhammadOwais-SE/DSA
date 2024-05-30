@@ -38,3 +38,21 @@ public class backTacking11 {
 //     // No
 //     subSet(str, ans, i+1);
 // }
+
+
+// ============== print the permutation of String "abc" n!
+// public static void permutation(String str, String ans){
+//     // Base Case
+//     if (str.length() == 0){
+//         System.out.println(ans);
+//         return;
+//     }
+
+//     // kam kiya recursion
+//     for (int i = 0; i < str.length(); i++){
+//         char curr = str.charAt(i);
+//         String revCharString = str.substring(0, i) + str.substring(i+1);
+//         permutation(revCharString, ans+curr);
+//     };
+
+// }
