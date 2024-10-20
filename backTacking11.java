@@ -2,9 +2,41 @@ package DSA;
 
 public class backTacking11 {
     public static void main(String[] args) {
+
+        // int n=3, m=3 ;
+        // System.out.print(girdWays(0, 0, n, m));
+
         System.out.print("bitManuplation in java");
+        
+        int n = 4;
+        char board[] [] = new char[n][n];
+        //initialize
+        for (int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                board[i][j] = 'x';
+            }
+        }
     }
+    // System.out.print("Total Count: " + count);
+    // System.out.print(ans);
 }
+
+// - ------------------------ n grid to find the any possible solution in grid. TIme complexsity is O(2 exponent n+m ) which is very terrible
+// public static int girdWays(int i, int j, int n, int m){
+//     if (i == n-1 && j == m-1){
+//         return 1;
+//     }else if(i == n || j == m){
+//         return 0;
+//     }
+//     int w1 = girdWays(i+1, j, n, m);
+//     int w2 = girdWays(i, j+1, n, m);
+//     return w1+w2;
+// }
+
+
+
+
+// ----------------------
 // Backtracking question 1) printing arr using bracktracking
 // public static void changeArr(int arr[], int i, int val){
 //     // Base Case
