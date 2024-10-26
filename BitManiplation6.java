@@ -1,4 +1,3 @@
-package DSA;
 
 public class BitManiplation6 {
         public static void main(String[] args) {

@@ -1,4 +1,3 @@
-package DSA;
 
 public class backTacking11 {
     public static void main(String[] args) {

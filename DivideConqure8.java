@@ -1,4 +1,4 @@
-package DSA;
+
 
 public class DivideConqure8 {
     public static void main(String[] args) {
