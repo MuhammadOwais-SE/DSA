@@ -5,55 +5,98 @@ public class QeueuPackage {
     // Queue<Integer> q2;
     
 
-    //-------------- build stack using Qeueu
-        static class myStack{ 
-        Queue<Integer> q1;
-        Queue<Integer> q2;
 
-        public myStack(){
-            q1 = new ArrayDeque<>();
-            q2 = new ArrayDeque<>();
-        }
-        
-        public void add(int data){
-            while(!q1.isEmpty()){
-                q2.add(q1.remove());
-            } 
-            q1.add(data);
-            while(!q2.isEmpty()){
-                q1.add(q2.remove());
-            } 
+
+
+
+public static void nonRepeat(String str){
+    Queue<Character> q = new LinkedList<>();
+    int[] freq = new int [26];
+    for(int i=0 ; i<str.length() ; i++){
+        char ch = str.charAt(i);
+        q.add(ch);
+        freq[ch-'a']++;
+        while (!q.isEmpty() && freq[q.peek()-'a'] > 1) {
+            q.remove();
         }
 
-        public int remove(){
-            if(q1.isEmpty()){
-                return -1;
-            }
-            return q1.remove();
+        if(q.isEmpty()){
+            System.out.print(-1+ " "); 
+        }else{
+            System.out.print(q.peek()+ " ");
         }
-
-        public int peek(){
-            if(q1.isEmpty()){
-                return -1;
-            }
-            return q1.peek();
-        }
-
-        public boolean isEmpty(){
-            return q1.isEmpty();
-        }
-
-        public static void main(String arg[]){
-            myStack s = new myStack();
-            s.add(1);
-            s.add(2);
-            s.add(3);
-
-            System.out.println(s.remove());
-            System.out.println(s.peek());
-        }
-
     }
+        
+}
+
+
+
+
+public static void main(String arg[]){
+    String str = "aabccxb";
+    nonRepeat(str);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    //-------------- build stack using Qeueu ---- making the push function big of O(n)
+    //     static class myStack{ 
+    //     Queue<Integer> q1;
+    //     Queue<Integer> q2;
+
+    //     public myStack(){
+    //         q1 = new ArrayDeque<>();
+    //         q2 = new ArrayDeque<>();
+    //     }
+        
+    //     public void add(int data){
+    //         while(!q1.isEmpty()){
+    //             q2.add(q1.remove());
+    //         } 
+    //         q1.add(data);
+    //         while(!q2.isEmpty()){
+    //             q1.add(q2.remove());
+    //         } 
+    //     }
+
+    //     public int remove(){
+    //         if(q1.isEmpty()){
+    //             return -1;
+    //         }
+    //         return q1.remove();
+    //     }
+
+    //     public int peek(){
+    //         if(q1.isEmpty()){
+    //             return -1;
+    //         }
+    //         return q1.peek();
+    //     }
+
+    //     public boolean isEmpty(){
+    //         return q1.isEmpty();
+    //     }
+
+    //     public static void main(String arg[]){
+    //         myStack s = new myStack();
+    //         s.add(1);
+    //         s.add(2);
+    //         s.add(3);
+
+    //         System.out.println(s.remove());
+    //         System.out.println(s.peek());
+    //     }
+
+    // }
 
 
     // ------------- build Qeueu using stacks. 
