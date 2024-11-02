@@ -32,16 +32,40 @@ public class stack26 {
             s.push(i);
         }
     }
+
+    public static void moveZero(int[] arr){
+        int lastIndex = 0;
+        for(int i =0; i<arr.length; i++  ){
+            if( arr[i] != 0){
+                arr[lastIndex] = arr[i]; 
+                lastIndex++;
+            }
+            
+        }
+        for(int i=lastIndex; i<arr.length; i++ ){
+            arr[i] = 0;
+        }
+        for(int i=0; i<arr.length; i++){
+            System.out.print(arr[i] + ", ");
+        }
+    }
+
     public static void main(String arg[]){
         // int[] stock = {100, 80, 60, 70, 60, 85, 100};
         // int[] span = new int[stock.length];
         // stockSpan(span, stock);
+         
+        // int[] arr = {2,4,0,9,6};
         
-        int[] arr = {2,4,0,9,6};
-        int[] greater = new int [arr.length];
-        nextGreater(arr, greater);
-        for(int i=0; i<greater.length; i++){
-            System.out.print(greater[i] +", ");
-        }
+        // int[] greater = new int [arr.length];
+        // nextGreater(arr, greater);
+        // for(int i=0; i<greater.length; i++){
+        //     System.out.print(greater[i] +", ");
+        // }
+
+
+        int [] qArr = {0,1,0,3,12};
+        moveZero(qArr);
+        // System.out.print();
     }
 }
