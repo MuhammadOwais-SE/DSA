@@ -4,13 +4,8 @@ import java.util.Queue;
 
 public class QeueuPackage {
     // Queue<Integer> q1;
-    // Queue<Integer> q2;
-    
-
-
-
-
-
+    // Queue<Integer> q2;    
+// ============= nonRepeative character
 public static void nonRepeat(String str){
     Queue<Character> q = new LinkedList<>();
     int[] freq = new int [26];
@@ -21,22 +16,42 @@ public static void nonRepeat(String str){
         while (!q.isEmpty() && freq[q.peek()-'a'] > 1) {
             q.remove();
         }
-
         if(q.isEmpty()){
             System.out.print(-1+ " "); 
         }else{
             System.out.print(q.peek()+ " ");
         }
     }
-        
 }
 
+// ====================== interleave in Queue
+public static void interleave(Queue<Integer> q){
+    Queue<Integer> newQ = new LinkedList<>();
+    int size = q.size();
 
+    for(int i =0; i<size/2; i++){
+        newQ.add(q.remove());
+    }
+    while(!newQ.isEmpty()){
+        q.add(newQ.remove());
+        q.add(q.remove());
+    }
+        
 
-
+}
 public static void main(String arg[]){
     String str = "aabccxb";
-    nonRepeat(str);
+    Queue<Integer> q = new LinkedList<>();
+    int i =1;
+    while(i<11){
+        q.add(i);
+        i++;
+    }
+    interleave(q);
+    while(!q.isEmpty()){
+        System.out.print(q.remove()+ " ");
+    }
+    // nonRepeat(str);
 }
 
 
