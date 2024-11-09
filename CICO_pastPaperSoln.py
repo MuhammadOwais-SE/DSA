@@ -1,25 +1,31 @@
 print("hello python")
 
 
-def count_meteor_showers(B, L, E):
-    interval = 50
-    birth_year = -B
-    death_year = birth_year  + L 
-    meteor_year = E 
-    count = 0
+def count_meteor_showers(B, L, E):  
+      current_age_at_shower = B+E 
+      age_at_first_shower = current_age_at_shower  % 50
+      rem_year = L - age_at_first_shower
+      no_of_shower = (rem_year //50) +1
 
-   # Move back in intervals to find the last meteor shower within the lifetime range
-    while meteor_year - interval >= birth_year:
-        meteor_year -= interval
+      return no_of_shower
+    # interval = 50
+    # birth_year = -B
+#     death_year = birth_year  + L 
+#     meteor_year = E 
+#     count = 0
+
+#    # Move back in intervals to find the last meteor shower within the lifetime range
+#     while meteor_year - interval >= birth_year:
+#         meteor_year -= interval
     
-    # Count all meteor showers within the person's lifetime
-    count = 0
-    while meteor_year <= death_year:
-        if meteor_year >= birth_year:
-            count += 1
-        meteor_year += interval  # Move to the next meteor shower
+#     # Count all meteor showers within the person's lifetime
+#     count = 0
+#     while meteor_year <= death_year:
+#         if meteor_year >= birth_year:
+#             count += 1
+#         meteor_year += interval  # Move to the next meteor shower
     
-    return count
+#     return count
 
 
 
