@@ -1,6 +1,7 @@
-package DSA;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class greedy{
@@ -122,20 +123,74 @@ public class greedy{
             System.out.print(maxVal);
         }
         // =============== another simplified approach to solve knapsack in 2D
-        public static void optimiseKnapSack(int[] val, int[] w, int capacity ){
-            Arrays.sort(boxTypes, (a, b) -> b[1] - a[1] );
-            int maxValue = 0;
+        // public static void optimiseKnapSack(int[] val, int[] w, int capacity ){
+        //     Arrays.sort(boxTypes, (a, b) -> b[1] - a[1] );
+        //     int maxValue = 0;
     
-            for(int i=0; i<boxTypes.length; i++){
-                int boxesTake = Math.min(truckSize, boxTypes[i][0]);
-                truckSize -= boxesTake;
-                maxValue += boxesTake * boxTypes[i][1];
-                if (truckSize == 0){
-                    break;
-                }
+        //     for(int i=0; i<boxTypes.length; i++){
+        //         int boxesTake = Math.min(truckSize, boxTypes[i][0]);
+        //         truckSize -= boxesTake;
+        //         maxValue += boxesTake * boxTypes[i][1];
+        //         if (truckSize == 0){
+        //             break;
+        //         }
+        //     }
+        //     return maxValue;
+        // }
+
+// =============----------- india coin change problem
+        // public static int coinChange(int[] coins, int amount) {
+        //     Arrays.sort(coins, Collection.reverseOrder());
+        //     int countCoins = 0;
+        //    for(int i=0; i<coins.length; i++){
+        //         if(coins[i]>amount){
+        //             amount -= coins[i];
+        //             countCoins += 1;
+        //         }
+        //    } 
+        //    return countCoins;
+        // }
+
+// ===============---- Choco Probolem( Minimum amount of cost by horizontal and vertical cutting )
+    public static void minCost(Integer[] costVer, Integer[] costHor, int m, int n) {
+        int h = 0, v = 0; // Indices for horizontal and vertical cost arrays
+        int hp = 1, vp = 1; // Pieces along horizontal and vertical
+        int cost = 0;
+
+        // Sort costs in descending order
+        Arrays.sort(costVer, Collections.reverseOrder());
+        Arrays.sort(costHor, Collections.reverseOrder());
+
+        // Process both arrays until one of them is exhausted
+        while (v < costVer.length && h < costHor.length) {
+            if (costVer[v] >= costHor[h]) {
+                // Vertical cut
+                cost += costVer[v] * hp; // Add cost of vertical cut
+                vp++; // Increase vertical pieces
+                v++;
+            } else {
+                // Horizontal cut
+                cost += costHor[h] * vp; // Add cost of horizontal cut
+                hp++; // Increase horizontal pieces
+                h++;
             }
-            return maxValue;
         }
+
+        // Process remaining vertical cuts
+        while (v < costVer.length) {
+            cost += costVer[v] * hp;
+            v++;
+        }
+
+        // Process remaining horizontal cuts
+        while (h < costHor.length) {
+            cost += costHor[h] * vp;
+            h++;
+        }
+
+        System.out.println("Minimum cost: " + cost);
+    }
+    
     public static void main(String args []){
         int[] startTime = {1, 0, 5, 8, 3, 5};
         int[] endTime   = {2, 6, 7, 9, 4, 9};
@@ -146,6 +201,17 @@ public class greedy{
         int[] val = {60, 100 , 120};
         int[] w ={10, 20, 30};
         int capacity = 50;
-        fractionKnapSack(val, w, capacity);
+        // fractionKnapSack(val, w, capacity);
+
+        int[] coins= {1,2,5};
+        int amount = 11;
+        // System.out.println(coinChange(coins, amount));
+        // coinChange(coins, amount);
+
+        int m= 4,  n=6;
+        Integer[] costVer = {2, 1, 3, 1, 4};
+        Integer[] costHor = {4, 1, 2};
+
+        minCost(costVer, costHor, m, n);
     }
 }
